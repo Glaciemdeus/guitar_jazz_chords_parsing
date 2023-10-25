@@ -29,10 +29,6 @@ def name_decorate(name):
         if word in rep:
             name = name.replace(word, "_")
     return name
-#  write image to pdf
-def write_to_pdf():
-    with open("data/chords.pdf", "wb") as f:
-        f.write(img2pdf.convert(image_list))
 # the image is deleted or added to the list
 def img_check(img):
     if image_comparsion("example.png", img) > 60:
@@ -104,7 +100,8 @@ def img_parsing(json_file):
         
     print("Create a pdf document")
     time.sleep(random.randrange(1,2))
-    write_to_pdf()
+    with open("data/chords.pdf", "wb") as f:
+        f.write(img2pdf.convert(image_list))
     
     print("*" * 20)
     print("Done")
